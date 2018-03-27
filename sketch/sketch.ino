@@ -55,6 +55,7 @@ void loop() {
  {
    if (lvlvar1 == HIGH)
    {
+    Serial.println(currentMillis);
    pumpState1 = LOW; // включаем
    wtrlvlState1 = LOW;
    previousMillis1 = currentMillis ; // запоминаем момент времени
@@ -84,12 +85,14 @@ void loop() {
  }
  else
  {
-   lightState1 = LOW;  
-   digitalWrite(lightled1, lightState1); 
+    lightState1 = HIGH; 
+   digitalWrite(lightled1, lightState1);  
+   Serial.println("day end");
  }
   // сброс дня 
   if (currentMillis > holeDay)
   { 
+    Serial.println("reset");
     resetFunc(); //вызываем reset
     delay(100);
     Serial.println("hello");
